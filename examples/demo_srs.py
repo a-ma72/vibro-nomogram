@@ -52,9 +52,12 @@ def main():
     )
 
     ax.daxis.plot(freqs, accels, "r-", linewidth=2, label="SRS Profile")
+    # Recompute the data limits based on current artists
     ax.relim()
+    # Autoscale the view limits using the data limits
     ax.autoscale_view()
-    ax.set_autoscale_on(False)  # freeze both axes
+    # Now freeze both axes
+    ax.set_autoscale_on(False)
     ax.set_ylim(0.01, 10)
 
     _, ymax = ax.get_ylim()
@@ -84,8 +87,8 @@ def main():
         alpha=0.3,
     )
 
-    ax.grid(True, which="major", color="k", linewidth=0.8, linestyle="-", alpha=0.4)
-    ax.grid(True, which="minor", color="k", linewidth=0.5, linestyle="-", alpha=0.2)
+    ax.grid(visible=True, which="major", color="k", linewidth=0.8, linestyle="-", alpha=0.4)
+    ax.grid(visible=True, which="minor", color="k", linewidth=0.5, linestyle="-", alpha=0.2)
 
     ax.legend(loc=8)
     ax.set_title("Vibro-Nomogram SRS Demonstrator")
