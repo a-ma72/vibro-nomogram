@@ -98,14 +98,14 @@ class FrequencySpaceAxes(Axes):
             self.daxis.grid(True)
 
     def grid(
-        self, b: bool | None = None, which: str = "major", axis: str = "both", **kwargs
+        self, visible: bool | None = None, which: str = "major", axis: str = "both", **kwargs
     ) -> None:
         """
         Configure the grid lines.
 
         Parameters
         ----------
-        b : bool or None, optional
+        visible : bool or None, optional
             Whether to show the grid lines.
         which : {"major", "minor", "both"}, optional
             The grid lines to apply changes to.
@@ -114,15 +114,15 @@ class FrequencySpaceAxes(Axes):
         **kwargs
             Style properties.
         """
-        super().grid(b, which=which, axis=axis, **kwargs)
+        super().grid(visible, which=which, axis=axis, **kwargs)
 
-        if b is None:
-            b = rcParams["axes.grid"]
+        if visible is None:
+            visible = rcParams["axes.grid"]
 
         if self.iaxis is not None:
-            self.iaxis.grid(visible=b, which=which, **kwargs)
+            self.iaxis.grid(visible=visible, which=which, **kwargs)
         if self.daxis is not None:
-            self.daxis.grid(visible=b, which=which, **kwargs)
+            self.daxis.grid(visible=visible, which=which, **kwargs)
 
     def draw(self, renderer: RendererBase) -> None:
         """
